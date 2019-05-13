@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    CS50 Job Board
+{% endblock %}
+{% block main %}
+
+{% if session.user_id %}
+<!--todo-->
+<div class="inner cover">
+    <div class="inner cover">
+    <h1 class="display-3">Welcome to the CS50 Job Board</h1>
+    <hr></hr>
+    <iframe src="https://giphy.com/embed/ccRMwBf7d9SNaYBktq" width="403" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/stickers/harvard-school-ccRMwBf7d9SNaYBktq">via GIPHY</a></p>
+    <hr></hr>
+    <p class="lead">CS50 Job Board is a platform for companies, to find top CS50 students. Post a job, receive submissions, and start working with the very best.</p>
+    <p class="lead">
+        <a class="btn btn-primary" href="/post" role="button">Post a Job!</a>
+{% else %}
+<div class="inner cover">
+    <iframe src="https://giphy.com/embed/ccRMwBf7d9SNaYBktq" width="100" height="100" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></p><h1 class="display-3">CS50 Job Board</h1>
+    <p class="lead">CS50 Job Board is a platform for companies, to find top CS50 students. Post a job, receive submissions, and start working with the very best.</p>
+    <p class="lead">
+        <a href="/register" class="btn btn-primary">Register</a> 
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target=".bd-example-modal-lg">Learn More</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <center><iframe width="560" height="315" src="https://www.youtube.com/embed/FaO9yVKKeTc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+    </div>
+  </div>
+</div>
+    </p>
+    <p class="small">
+        Have you already created an account?<a href="/login" class="link"> Login</a>
+    </p>
+    
+</div>
+
+<div class="image">
+    <img src="https://images.unsplash.com/photo-1507617009199-748248ff4810?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" class="img-fluid" alt="Responsive image">
+    Image courtesy of: <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@odiin?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Erik Odiin"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Erik Odiin</span></a>
+</div><br>
+
+<div class ="listing cover">
+    <h1 class="display-3">Recent Job Postings</h1>
+        <table class="table table-striped">
+            
+        <thead>
+            <tr>
+                <th>Job Title</th>
+                <th>Job Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for listing in listings %}
+                <tr>
+                    <td>{{ listing.job }}</td>
+                    <td>{{ listing.description }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="/jobs" role="button">View All Jobs!</a>
+</div>
+{% endif %}
+{% endblock %}
+
